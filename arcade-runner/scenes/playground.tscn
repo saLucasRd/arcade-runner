@@ -1,18 +1,35 @@
 [gd_scene format=3 uid="uid://b2jpo5qobhsv2"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_6kjfc"]
-size = Vector3(100, 2, 40)
+[ext_resource type="Script" uid="uid://thr26qdgo34i" path="res://scripts/playground.gd" id="1_hddm4"]
+[ext_resource type="PackedScene" uid="uid://ce3q8pxc2rk7s" path="res://scenes/ground.tscn" id="2_qchbg"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_i3xvo"]
-size = Vector3(100, 2, 40)
+[sub_resource type="BoxShape3D" id="BoxShape3D_6kjfc"]
+size = Vector3(5, 1, 1)
 
 [node name="Playground" type="Node3D" unique_id=1428209750]
+script = ExtResource("1_hddm4")
+ground_scene = ExtResource("2_qchbg")
 
-[node name="Ground" type="StaticBody3D" parent="." unique_id=1680112019]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2011522882]
+transform = Transform3D(1, 0, 0, 0, 0.7071067, 0.7071068, 0, -0.7071068, 0.7071067, 0, 73, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=908355697]
+[node name="SpawnNewGroundArea3D" type="Area3D" parent="." unique_id=262060080]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpawnNewGroundArea3D" unique_id=1620480151]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 shape = SubResource("BoxShape3D_6kjfc")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=1729887816]
-mesh = SubResource("BoxMesh_i3xvo")
+[node name="Camera3D" type="Camera3D" parent="." unique_id=109767701]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 6, -124)
+
+[node name="Ground" parent="." unique_id=516402740 instance=ExtResource("2_qchbg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50)
+
+[node name="Ground2" parent="." unique_id=603928982 instance=ExtResource("2_qchbg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -50)
+
+[node name="Ground3" parent="." unique_id=772786654 instance=ExtResource("2_qchbg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -150)
+
+[connection signal="body_entered" from="SpawnNewGroundArea3D" to="." method="_on_spawn_new_ground_area_3d_body_entered"]

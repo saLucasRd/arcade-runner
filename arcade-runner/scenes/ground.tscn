@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://ce3q8pxc2rk7s"]
+
+[ext_resource type="Script" uid="uid://cw4kcq8keta1c" path="res://scenes/ground.gd" id="1_pybca"]
+[ext_resource type="Texture2D" uid="uid://drg8rhqolumvv" path="res://protype textures/Green/texture_01.png" id="2_mi8v4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6kjfc"]
+size = Vector3(50, 2, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pybca"]
+blend_mode = 4
+albedo_texture = ExtResource("2_mi8v4")
+metallic = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_i3xvo"]
+size = Vector3(50, 2, 100)
+
+[node name="Ground" type="StaticBody3D" unique_id=516402740]
+script = ExtResource("1_pybca")
+speed = 10.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=979815666]
+shape = SubResource("BoxShape3D_6kjfc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2031216157]
+material_override = SubResource("StandardMaterial3D_pybca")
+mesh = SubResource("BoxMesh_i3xvo")
