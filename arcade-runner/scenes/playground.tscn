@@ -6,6 +6,8 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_6kjfc"]
 size = Vector3(5, 1, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_o7cku"]
+
 [node name="Playground" type="Node3D" unique_id=1428209750]
 script = ExtResource("1_hddm4")
 ground_scene = ExtResource("2_qchbg")
@@ -14,22 +16,25 @@ ground_scene = ExtResource("2_qchbg")
 transform = Transform3D(1, 0, 0, 0, 0.7071067, 0.7071068, 0, -0.7071068, 0.7071067, 0, 73, 0)
 
 [node name="SpawnNewGroundArea3D" type="Area3D" parent="." unique_id=262060080]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SpawnNewGroundArea3D" unique_id=1620480151]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 shape = SubResource("BoxShape3D_6kjfc")
 
+[node name="DeleteGroundArea3D" type="Area3D" parent="." unique_id=1153720570]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -148)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DeleteGroundArea3D" unique_id=2003135511]
+shape = SubResource("BoxShape3D_o7cku")
+
+[node name="Camera3D2" type="Camera3D" parent="." unique_id=1197975994]
+transform = Transform3D(-0.17543118, 0.406666, -0.89657503, 0, 0.91069835, 0.41307208, 0.9844917, 0.07246572, -0.1597649, -193.72377, 137.83563, 80.30822)
+fov = 70.0
+
 [node name="Camera3D" type="Camera3D" parent="." unique_id=109767701]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 6, -124)
-
-[node name="Ground" parent="." unique_id=516402740 instance=ExtResource("2_qchbg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50)
-
-[node name="Ground2" parent="." unique_id=603928982 instance=ExtResource("2_qchbg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -50)
-
-[node name="Ground3" parent="." unique_id=772786654 instance=ExtResource("2_qchbg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -150)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 6, 0)
+visible = false
+fov = 90.0
 
 [connection signal="body_entered" from="SpawnNewGroundArea3D" to="." method="_on_spawn_new_ground_area_3d_body_entered"]
+[connection signal="body_entered" from="DeleteGroundArea3D" to="." method="_on_delete_ground_area_3d_body_entered"]
