@@ -18,7 +18,7 @@ size = Vector3(50, 2, 150)
 
 [node name="Ground" type="StaticBody3D" unique_id=516402740]
 script = ExtResource("1_pybca")
-speed = 18.0
+speed = 30.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=979815666]
 shape = SubResource("BoxShape3D_6kjfc")

@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://thr26qdgo34i" path="res://scripts/playground.gd" id="1_hddm4"]
 [ext_resource type="PackedScene" uid="uid://ce3q8pxc2rk7s" path="res://scenes/ground.tscn" id="2_qchbg"]
-[ext_resource type="PackedScene" uid="uid://bolhhgilp5rv0" path="res://scenes/box.tscn" id="3_kddj0"]
+[ext_resource type="PackedScene" uid="uid://bolhhgilp5rv0" path="res://scenes/obstacles/rectangle.tscn" id="3_q8s1k"]
+[ext_resource type="PackedScene" uid="uid://b3t8s3gdecjng" path="res://scenes/obstacles/rectangle_line.tscn" id="4_mm0a5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6kjfc"]
 size = Vector3(5, 1, 1)
@@ -12,6 +13,8 @@ size = Vector3(5, 1, 1)
 [node name="Playground" type="Node3D" unique_id=1428209750]
 script = ExtResource("1_hddm4")
 ground_scene = ExtResource("2_qchbg")
+obstacles = Array[PackedScene]([ExtResource("3_q8s1k"), ExtResource("4_mm0a5")])
+x_position_possible_values = Array[float]([0.0, 15.0, -15.0])
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2011522882]
 transform = Transform3D(1, 0, 0, 0, 0.7071067, 0.7071068, 0, -0.7071068, 0.7071067, 0, 73, 0)
@@ -31,24 +34,13 @@ shape = SubResource("BoxShape3D_o7cku")
 [node name="Camera3D2" type="Camera3D" parent="." unique_id=1197975994]
 unique_name_in_owner = true
 transform = Transform3D(-0.17543118, 0.406666, -0.89657503, 0, 0.91069835, 0.41307208, 0.9844917, 0.07246572, -0.15976489, -193.72377, 137.83563, 80.30822)
+current = true
 fov = 70.0
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=109767701]
 unique_name_in_owner = true
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 6, 0)
+transform = Transform3D(-1, -1.7763568e-15, 8.742278e-08, 2.262668e-08, 0.9659259, 0.25881907, -8.444392e-08, 0.25881907, -0.9659258, 0, 13, 0)
 fov = 80.0
-
-[node name="Ground" parent="." unique_id=516402740 instance=ExtResource("2_qchbg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 75)
-
-[node name="Ground3" parent="." unique_id=1032592283 instance=ExtResource("2_qchbg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 375)
-
-[node name="Ground2" parent="." unique_id=41597882 instance=ExtResource("2_qchbg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 225)
-
-[node name="Box" parent="." unique_id=340473728 instance=ExtResource("3_kddj0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 6, 29)
 
 [connection signal="body_entered" from="SpawnNewGroundArea3D" to="." method="_on_spawn_new_ground_area_3d_body_entered"]
 [connection signal="body_entered" from="DeleteGroundArea3D" to="." method="_on_delete_ground_area_3d_body_entered"]

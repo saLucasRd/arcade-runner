@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://b3t8s3gdecjng"]
+
+[ext_resource type="Texture2D" uid="uid://dak41mhrjjkxq" path="res://protype textures/Dark/texture_08.png" id="1_0h2xj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i3xvo"]
+albedo_texture = ExtResource("1_0h2xj")
+texture_filter = 1
+
+[sub_resource type="BoxMesh" id="BoxMesh_o7cku"]
+material = SubResource("StandardMaterial3D_i3xvo")
+size = Vector3(10, 10, 25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6kjfc"]
+size = Vector3(5, 5, 5)
+
+[node name="Node3D" type="Node3D" unique_id=1477424929]
+
+[node name="Rectangle2" type="StaticBody3D" parent="." unique_id=1237994762]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -55)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Rectangle2" unique_id=1952742143]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+mesh = SubResource("BoxMesh_o7cku")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rectangle2" unique_id=683443326]
+shape = SubResource("BoxShape3D_6kjfc")
+
+[node name="Rectangle3" type="StaticBody3D" parent="." unique_id=1361760049]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -109)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Rectangle3" unique_id=1783175574]
+mesh = SubResource("BoxMesh_o7cku")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rectangle3" unique_id=359465364]
+shape = SubResource("BoxShape3D_6kjfc")

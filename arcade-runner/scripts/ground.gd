@@ -1,3 +1,4 @@
+## Ground moves z to negativa by speed, speed is set here.
 class_name Ground
 extends StaticBody3D
 
