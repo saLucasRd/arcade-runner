@@ -7,9 +7,11 @@
 size = Vector3(50, 2, 150)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pybca"]
-blend_mode = 4
+depth_draw_mode = 2
+diffuse_mode = 3
+disable_fog = true
 albedo_texture = ExtResource("2_mi8v4")
-metallic = 1.0
+texture_filter = 1
 
 [sub_resource type="BoxMesh" id="BoxMesh_i3xvo"]
 size = Vector3(50, 2, 150)
